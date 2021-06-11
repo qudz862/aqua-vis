@@ -1,4 +1,8 @@
 <template>
+  <div class="sys-top-region">
+    <div>T_T AQUA-VIS</div>
+    <div>Visual Analytics System for Air Quality Spatio-Temporal Patterns in Ubran Agglomeration</div>
+  </div>
   <div class="whole-container">
     <div class="col1">
       <Control />
@@ -6,7 +10,7 @@
     </div>
     <div>
       <div class="row-up">
-        <Map />
+        <!-- <Map /> -->
         <CO3Plot />
         <STDistribution />    
       </div>
@@ -37,6 +41,21 @@ export default {
 </script>
 
 <style scoped>
+.sys-top-region {
+  width: 100%;
+  height: 46px;
+  background-color: #2c2c2c;
+  /* margin: 1px; */
+  margin-bottom: 5px;
+  color: #fff;
+  font: 700 24px "Arial";
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  /* border-radius: 10px; */
+}
+
 .whole-container {
   padding: 2px;
   /* border: solid 1px #666; */

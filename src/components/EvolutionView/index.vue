@@ -208,6 +208,9 @@ export default {
     }
 
     onMounted(() => {
+      startDate = new Date(stateObj.selTime.start)
+      endDate = new Date(stateObj.selTime.end)
+      // console.log(startDate, endDate);
       svg = d3.select("#evolutionFlow")
               .attr('width', width)
               .attr('height', height)
@@ -238,9 +241,9 @@ export default {
     }
 
     function getDaysBetween(dateString1, dateString2) {
-      const  startDate = Date.parse(dateString1);
-      const  endDate = Date.parse(dateString2);
-      const days = (endDate - startDate)/(1*24*60*60*1000);
+      const  startDate_t = Date.parse(dateString1);
+      const  endDate_t = Date.parse(dateString2);
+      const days = (endDate_t - startDate_t)/(1*24*60*60*1000);
       // alert(days);
       return days;
     }
@@ -1841,6 +1844,14 @@ export default {
       }
     })
 
+    watch (() => stateObj.selTime.end, (oldVlaue, newValue) => {
+      endDate = new Date(stateObj.selTime.end)
+    })
+
+    watch (() => stateObj.selTime.start, (oldVlaue, newValue) => {
+      startDate = new Date(stateObj.selTime.start)
+    })
+    
     watch (() => stateObj.focused_level, (oldVlaue, newValue) => {
       drawRadar()
       drawLink()
@@ -2059,6 +2070,7 @@ export default {
       sDate = new Date(stateObj.selTime.start)
       totalDayNum = getDaysBetween(stateObj.selTime.start, stateObj.selTime.end) + 1
       curStackList = []
+      console.log(totalDayNum, clusterNum);
       for (let i = 0; i < totalDayNum; ++i) {
         curStackList.push([])
         for (let j = 0; j < clusterNum; ++j) {

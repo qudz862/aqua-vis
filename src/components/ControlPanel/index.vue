@@ -4,7 +4,7 @@
     <SpaceConfig @selectRegion="selectRegion" />
     <TimeConfig />
     <SubspaceConfig />
-    <FlowFilter />
+    <!-- <FlowFilter /> -->
   </div>
 </template>
 
@@ -45,21 +45,27 @@ export default {
 
 <style scoped>
 .outer-container {
-  width: 270px;
-  height: 1073px;
-  border: solid 1px #b2b5b5;
+  width: 310px;
+  height: 1007px;
+  border: solid 1px #c2c5c5;
+  border-radius: 6px;
   /* padding: 1px; */
-  margin: 1px;
+  margin: 3px;
 }
 
 .title-layer {
   /* position: absolute; */
   z-index: 80;
-  width: 268px;
-  height: 24px;
+  width: 278px;
+  height: 20px;
   text-align: left;
   padding-left: 12px;
-  background-color: #6c757d;
-  color: #fff;
+  /* background-color: #6c757d; */
+  /* color: #fff; */
+  margin-top: 10px;
+  /* font: 700 16px "Microsort Yahei"; */
+  font: 700 20px "Arial";
+  /* letter-spacing: 1px; */
+  color: #333;
 }
 </style>

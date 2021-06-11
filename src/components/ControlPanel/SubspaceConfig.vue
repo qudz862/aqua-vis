@@ -1,6 +1,6 @@
 <template>
   <div class="config-title">
-    <span class="iconfont">&#xe712;</span> Subspace Selection
+    <span class="iconfont">&#xe712;</span> SUBSPACE SELECTION
   </div>
   <div class="local-global-config">
     <div class="form-check">
@@ -18,14 +18,14 @@
     </div>
   </div>
   <div class="svg-container">
-    <svg id="subspaceView" width=240 height=240 />
+    <svg id="subspaceView" width=280 height=260 />
   </div>
-  <div class="cluster-num">
+  <!-- <div class="cluster-num">
     <div>Number of Clusters: </div>
     <input id="cluster-num-input" class="form-control" type="text" v-model="cluster_num">
-  </div>
+  </div> -->
   <div>
-    <button id="clustering-btn" type="button" class="btn btn-secondary" @click="getClusterResult()">
+    <button id="clustering-btn" type="button" class="btn" @click="getClusterResult()">
       <!-- <span class="iconfont">&#xe663;</span>  -->
       Air Quality Summarization
     </button>
@@ -46,8 +46,8 @@ export default {
           state = store.state
     const stateObj = computed(() => state).value
 
-    const width = 240
-    const height = 240
+    const width = 280
+    const height = 260
 
     let svg
     let graph
@@ -92,15 +92,15 @@ export default {
     //   .range(colorList)
 
     function tick() {
-      const scale = 3
+      const scale = 3.2
       link.selectAll("line")
           .attr("x1", function(d) { return d.source.x * scale + width/2; })
-          .attr("y1", function(d) { return d.source.y * scale + height/2})
+          .attr("y1", function(d) { return d.source.y * scale + height/2-8;})
           .attr("x2", function(d) { return d.target.x * scale + width/2; })
-          .attr("y2", function(d) { return d.target.y * scale + height/2 });
+          .attr("y2", function(d) { return d.target.y * scale + height/2-8; })
 
       node.attr("transform", function(d) {
-        return "translate(" + (d.x*scale+width/2) + "," + (d.y*scale+height/2) + ")";
+        return "translate(" + (d.x*scale+width/2) + "," + (d.y*scale+height/2-8) + ")";
         });
     }
 
@@ -126,7 +126,7 @@ export default {
       else if (local_flag.value === 'global') miVal = inforObj['mutual_infor_global']
       const miScale = d3.scaleLinear()
         .domain([0, Math.max(...miVal)])
-        .range([0.1, 1])
+        .range([0.1, 1.2])
 
       force = d3.forceSimulation()
           .force("link", d3.forceLink().id(function(d) { return d.id; }))
@@ -268,7 +268,7 @@ export default {
         .range([0, 1])
       const miScale = d3.scaleLinear()
         .domain([0, Math.max(...miVal)])
-        .range([0, 1])
+        .range([0, 1.2])
       const coordScaleX = d3.scaleLinear()
         .domain([Math.min(...coordValX), Math.max(...coordValX)])
         .range([30, 210])
@@ -415,7 +415,7 @@ export default {
         .range([0.1, 1])
       const miScale = d3.scaleLinear()
         .domain([0, Math.max(...miVal)])
-        .range([0.1, 1])
+        .range([0.1, 1.2])
       const coordScaleX = d3.scaleLinear()
         .domain([Math.min(...coordValX), Math.max(...coordValX)])
         .range([30, 210])
@@ -528,15 +528,15 @@ export default {
     }
 
     function drawLegend () {
-      let legendScale = d3.scaleLinear().domain([0, 90]).range([0, 500])
+      let legendScale = d3.scaleLinear().domain([0, 108]).range([0, 500])
       legend = svg.append('g').attr('class', 'subspace-legend')
-      legend.selectAll('rect').data(d3.range(90)).enter()
+      legend.selectAll('rect').data(d3.range(108)).enter()
             .append('rect')
             .attr('x', (d,i) => {
               // console.log(d,i);
-              return 22+i*2
+              return 28+i*2
             })
-            .attr('y', height - 20)
+            .attr('y', height - 26)
             .attr('width', 2)
             .attr('height', 14)
             .attr('fill', (d,i) => {
@@ -551,14 +551,14 @@ export default {
             .attr('text-anchor', 'middle')
             .text('0')
             .attr("font-size", '14')
-            .attr('x', 12)
-            .attr('y', height-8)
+            .attr('x', 18)
+            .attr('y', height-14)
       legend.append('text')
             .attr('text-anchor', 'middle')
             .text('500')
             .attr("font-size", '14')
-            .attr('x', width-22)
-            .attr('y', height-8)
+            .attr('x', width-16)
+            .attr('y', height-14)
     }
 
     function getClusterResult () {
@@ -616,16 +616,19 @@ export default {
 
 <style scoped>
 .config-title {
-  font-weight: 600;
+  font-weight: 400;
   text-align: left;
   margin-left: 10px;
   margin-bottom: 3px;
-  margin-top: 10px;
+  margin-top: 18px;
+  letter-spacing: 0.5px;
+  font-family: "Arial";
 }
 
 .local-global-config {
-  width: 240px;
+  width: 280px;
   margin: 0 auto;
+  margin-bottom: 4px;
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
@@ -637,14 +640,17 @@ export default {
 }
 
 #clustering-btn {
-  width: 240px;
+  width: 280px;
   height: 32px;
   padding: 2px 0px;
-  margin-top: 6px;
+  margin-top: 14px;
+  border: solid 1px #9a9a9a;
+  border-radius: 16px;
+  color: #333;
 }
 
 .cluster-num {
-  width: 240px;
+  width: 280px;
   margin: 0 auto;
   margin-top: 6px;
   display: flex;
@@ -654,10 +660,10 @@ export default {
 }
 
 #cluster-num-input {
-  width: 80px;
-  font-size: 14px;
+  width: 90px;
+  font-size: 15px;
   padding: 0 5px;
-  height: 28px;
+  height: 30px;
   text-align: center;
 }
 

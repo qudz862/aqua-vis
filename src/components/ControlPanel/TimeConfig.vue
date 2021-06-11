@@ -1,6 +1,6 @@
 <template>
   <div class="config-title">
-    <span class="iconfont">&#xe706;</span> Time Selection
+    <span class="iconfont">&#xe706;</span> TIME SELECTION
   </div>
   <div class="form-group">
     <div class="form-row">
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div>
-    <button id="get-data-btn" type="button" class="btn btn-secondary" @click="getAirQualityInfor()">
+    <button id="get-data-btn" type="button" class="btn" @click="getAirQualityInfor()">
       <!-- <span class="iconfont">&#xe603;</span> -->
       Get Air Quality Data
     </button>
@@ -83,34 +83,40 @@ export default {
 
 <style scoped>
 .config-title {
-  font-weight: 600;
+  font-weight: 400;
   text-align: left;
   margin-left: 10px;
-  margin-bottom: 5px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  font-family: "Arial";
 }
 
 .form-row {
-  width: 240px;
+  width: 280px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 5px;
 }
 
 .form-control {
-  width: 194px;
-  font-size: 14px;
-  padding: 0 5px;
+  width: 220px;
+  font-size: 15px;
+  padding: 0 4px;
   height: 28px;
 }
 
 #get-data-btn {
-  width: 240px;
+  width: 280px;
   height: 32px;
   padding: 2px 0px;
-  margin-top: -7px;
+  margin-top: -3px;
+  border: solid 1px #9a9a9a;
+  border-radius: 16px;
+  color: #333;
 }
 
 </style>

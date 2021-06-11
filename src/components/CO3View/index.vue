@@ -669,9 +669,10 @@ export default {
 .outer-container {
   width: 420px;
   height: 420px;
-  border: solid 1px #666;
+  border: solid 1px #c2c5c5;
+  border-radius: 6px;
   /* padding: 1px; */
-  margin: 1px;
+  margin: 2px;
 }
 
 .svg-container {
@@ -692,8 +693,10 @@ export default {
   height: 24px;
   text-align: left;
   padding-left: 12px;
-  background-color: #6c757d;
-  color: #fff;
+  /* background-color: #6c757d; */
+  color: #333;
+  /* color: #fff; */
+  word-spacing: 2px;
 }
 
 #scatterAxis {
